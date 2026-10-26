@@ -1,6 +1,6 @@
 {
-  "name": "Ghost Fighter",
-  "short_name": "Ghost Fighter",
+  "name": "ISC Fighter",
+  "short_name": "ISC Fighter",
   "start_url": "./index.html",
   "display": "fullscreen",
   "orientation": "landscape",

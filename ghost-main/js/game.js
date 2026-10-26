@@ -80,9 +80,9 @@ function styledMoves(def) {
 }
 
 const Settings = Object.assign({ difficulty: 1, music: 6, sfx: 8, crt: true },
-  JSON.parse(localStorage.getItem('ghostfighter_settings') || '{}'));
+  JSON.parse(localStorage.getItem('ISCfighter_settings') || '{}'));
 function saveSettings() {
-  localStorage.setItem('ghostfighter_settings', JSON.stringify(Settings));
+  localStorage.setItem('fighter_settings', JSON.stringify(Settings));
   Sound.setVolumes(Settings.music / 10, Settings.sfx / 10);
   document.body.classList.toggle('no-crt', !Settings.crt);
 }
@@ -756,7 +756,7 @@ class LoadScene {
 function drawLogo(y) {
   const s = 1 + Math.sin(tick * 0.05) * 0.02;
   ctx.save(); ctx.translate(W / 2, y); ctx.scale(s, s);
-  bigText('GHOST', 0, -2, 40, '#e8f4ff', '#3d8bff');
+  bigText('ISC', 0, -2, 40, '#e8f4ff', '#3d8bff');
   bigText('FIGHTER', 0, 42, 30, '#fff6b0', '#ff5a00');
   ctx.restore();
 }
@@ -783,7 +783,7 @@ class PressStartScene {
     drawLogo(18);
     if (Math.floor(this.t / 30) % 2 === 0)
       text(Input.isTouch ? 'TAP TO START' : 'PRESS ANY KEY', W / 2, 300, { size: 12, align: 'center', color: '#ffd84a', outline: true });
-    text('© 2026 GHOST FIGHTER  ·  16-BIT EDITION', W / 2, 344, { size: 6, align: 'center', color: '#aab' });
+    text('© 2026 ISC FIGHTER  ·  16-BIT EDITION', W / 2, 344, { size: 6, align: 'center', color: '#aab' });
   }
 }
 
@@ -2037,7 +2037,7 @@ class OnlineMenuScene {
   share() {
     const link = inviteLink();
     const done = () => { this.toast = 'INVITE LINK COPIED!'; this.toastT = 120; };
-    if (navigator.share && Input.isTouch) navigator.share({ title: 'Ghost Fighter', text: `Fight me in Ghost Fighter! Room ${Net.code}`, url: link }).catch(() => {});
+    if (navigator.share && Input.isTouch) navigator.share({ title: 'ISC Fighter', text: `Fight me in ISC Fighter! Room ${Net.code}`, url: link }).catch(() => {});
     else if (navigator.clipboard) navigator.clipboard.writeText(link).then(done, () => { this.toast = link; this.toastT = 300; });
     else { this.toast = link; this.toastT = 300; }
   }
